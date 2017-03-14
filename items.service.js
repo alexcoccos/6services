@@ -39,7 +39,10 @@ angular.module('app').service('ItemSrv',function(){
   var cercaArma = function(nome){
     return armi.find(function(el){
       return el.nome == nome;
-    })
+    });
+  }
+  var eliminaArma = function(indice){
+    armi.splice(indice,1);
   }
 
   return{

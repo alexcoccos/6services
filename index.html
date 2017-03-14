@@ -19,19 +19,27 @@
         <!-- create an items service with the following methods: get, add, remove -->
         <div ng-controller="ItemsCtrl">
             <h3>Get Item: </h3>
-            <input class="form-control" type="text" ng-model"nome">
-            <div>
+            <input class="form-control" type="text" ng-model="nome">
+            <div ng-show="armaTrovata">
+              <h2>{{armaTrovata.nome}}</h2>
+              <p>{{armaTrovata.descrizione}}</p>
+              SLOTS: <p>{{armaTrovata.slots}}</p>
+              <img class="img-responsive" style="max-width:10%;margin:20px auto" ng-src="{{armaTrovata.image}}"/>
+            </div>
+            <div ng-hide="armaTrovata">
                 <button class="btn btn-primary" ng-click="addArma()">Add new Item</button>
-                <div class="text-center">
-                    <h1>Lista Armi</h1>
-                </div>
-                <div class="item" ng-repeat="arma in listaArmi track by $index">
-                    <h2>{{arma.nome}}</h2>
-                    <p>{{arma.descrizione}}</p>
-                    Slots: <span>{{arma.slots}}</span>
-                    <img class="img-responsive" style="max-width:10%;margin:20px auto" ng-src="{{arma.image}}" />
-                    <button class="btn btn-danger">Rimuovi</button>
-                    <hr>
+                <div >
+                  <div class="text-center">
+                      <h1>Lista Armi</h1>
+                  </div>
+                  <div class="item" ng-repeat="arma in listaArmi track by $index">
+                      <h2>{{arma.nome}}</h2>
+                      <p>{{arma.descrizione}}</p>
+                      Slots: <span>{{arma.slots}}</span>
+                      <img class="img-responsive" style="max-width:10%;margin:20px auto" ng-src="{{arma.image}}" />
+                      <button class="btn btn-danger" ng-click="eliminaArma($index)">Rimuovi</button>
+                      <hr>
+                  </div>
                 </div>
             </div>
         </div>
