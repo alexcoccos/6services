@@ -19,19 +19,17 @@
         <!-- create an items service with the following methods: get, add, remove -->
         <div ng-controller="ItemsCtrl">
             <h3>Get Item: </h3>
-            <input class="form-control" type="text">
-
-
+            <input class="form-control" type="text" ng-model"nome">
             <div>
-                <button class="btn btn-primary">Add new Item</button>
+                <button class="btn btn-primary" ng-click="addArma()">Add new Item</button>
                 <div class="text-center">
                     <h1>Lista Armi</h1>
                 </div>
-                <div class="item">
-                    <h2>Nome</h2>
-                    <p>descrizione</p>
-                    Slots: <span>slot</span>
-                    <img class="img-responsive" style="max-width:10%;margin:20px auto" src="http://placehold.it/350x350" />
+                <div class="item" ng-repeat="arma in listaArmi track by $index">
+                    <h2>{{arma.nome}}</h2>
+                    <p>{{arma.descrizione}}</p>
+                    Slots: <span>{{arma.slots}}</span>
+                    <img class="img-responsive" style="max-width:10%;margin:20px auto" ng-src="{{arma.image}}" />
                     <button class="btn btn-danger">Rimuovi</button>
                     <hr>
                 </div>
@@ -41,6 +39,7 @@
         <script src="app.js "></script>
         <!-- include items service -->
         <script src="items.controller.js "></script>
+        <script src="items.service.js"></script>
     </div>
 </body>
 
